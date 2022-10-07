@@ -16,3 +16,7 @@ const PORT = 5000;
 app.listen(PORT, () => {
     console.log('up and running on port', PORT);
 });
+
+let taskRouter = require('./routes/tasks.router.js');
+app.use('/tasks',taskRouter);
+
