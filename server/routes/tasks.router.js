@@ -46,4 +46,29 @@ router.get('/', (req, res) => {
 });
 });
 
+router.post('/', (req,res) => {
+    console.log('req.body in POST',req.body);
+    const sqlText = `
+        INSERT INTO "tasks"
+            ("task", "completed", "notes")
+        VALUES
+            ($1,$2,$3);
+        `;
+    const sqlParams = [
+        req.body.task,
+        req.body.completed,
+        req.body.notes,
+    ];
+    console.log("sqlText", sqlText);
+
+    pool.query(sqlText, sqlParams)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log('POST failed',err);
+            res.sendStatus(500);
+        });
+ });
+
 module.exports = router;
