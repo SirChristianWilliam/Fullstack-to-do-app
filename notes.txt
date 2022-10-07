@@ -1,0 +1,34 @@
+Create HTML structure.
+I will use checkboxes for the inputs.
+I should create a table container for the entries.
+A form w/container will be needed for the inputs. 
+All tasks will start with the boolean of false.
+I should have an input box to enter in the task. 
+A submit button to append that data. 
+A checkbox is for visual marking as complete, the delete button 
+will be for immediate deletion. 
+When appended, there will be the checkbox to mark whether
+the task is complete, and whether it should be deleted. 
+The delete will be a button. 
+
+I will use a GET post to first append the history. 
+I will return to that GET post every time I click the
+checkbox, press submit, or delete. 
+I will use a POST request to append the new data every submit. 
+I will use a DELETE request to delete the row.
+I will use a PUT request to toggle the checkbox and the boolean,
+as it is changing the existing data.
+I will have a routes folder, not sure if I will need one 
+files within, or more yet. 
+Prevent default for the form submits.  
+
+FOR IF I HAVE TIME AND A GOOD GRASP ON THIS:
+
+Create an add note button that will append a task row,
+and the client will be able to type in what the task is
+in that input box, which will start as blank. I could do this 
+by using a data() method for the inputs while appending
+to each row. This way, it will have a unique id of some 
+sort. Then the submit button could be in that same row,
+and once clicked, it will solidify that input row. I have an
+idea how to do all this, but I will do the basics first. 
