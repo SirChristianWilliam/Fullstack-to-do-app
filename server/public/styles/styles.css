@@ -1,3 +1,47 @@
 body {
     background-color: red;
+ }
+
+ input[type=checkbox] {
+    position: relative;
+      cursor: pointer;
 }
+/*
+input[type=checkbox]:hover {
+    background-color: white;
+ }
+input[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    transform: translate(0px);
+     border: 0px solid #555555;
+    border-radius: 3px;
+    background-image: radial-gradient(red,red,black,black,red);
+} */
+ 
+ 
+.myClass {
+    background-color: blue;
+}
+
+.lineThru {
+    text-decoration: line-through;
+    color:black;
+}
+.checkClass::after {
+    content: "";
+    display: inline;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    opacity:1;
+     transform: translate(-18px);
+     border: 0px solid #555555;
+    border-radius: 3px;
+    background-color:black;
+    pointer-events: none;
+}
+ 

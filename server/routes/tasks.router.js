@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-let tasks = [
+ let tasks = [
     {
         task: "Clean Room",
         completed: false,
@@ -37,7 +37,7 @@ let tasks = [
 
 router.get('/', (req, res) => {
     pool.query(`
-        SELECT * FROM "tasks";
+        SELECT * FROM "tasks" ORDER BY "id";
     `).then((dbRes) => {
     res.send(dbRes.rows);
 }).catch((err) => {
@@ -87,5 +87,25 @@ router.post('/', (req,res) => {
         res.sendStatus(500);
     });
  });
+
+ router.put('/:id', (req,res) => {
+    const taskId = req.params.id;
+     console.log("In PUT with id:",taskId);
+  
+    sqlText = `UPDATE "tasks"
+                SET "completed" = NOT "completed"
+                WHERE "id" = $1`;
+    const sqlParams = [taskId];
+
+    pool.query(sqlText, sqlParams)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log("Update failed",err);
+            res.sendStatus(500);
+        });
+        console.log(req.params,"HHHHH");
+});
 
 module.exports = router;
