@@ -71,8 +71,7 @@ function deleteTask(evt) {
     evt.preventDefault();
 console.log('DELETE button was clicked,ID being', $(this).data('id'));
     let taskId = $(this).data('id');
-    $(this).parent().parent().css("background-color","blue");
-
+ 
     $.ajax({
         method: 'DELETE',
         url: `/tasks/${taskId}`,
