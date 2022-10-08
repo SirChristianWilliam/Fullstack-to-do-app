@@ -1,28 +1,66 @@
 body {
-    background-color: red;
+    background-image: url(notepad.jpeg);
+    background-repeat: repeat;
+    padding-left: 155px;
+    padding-top: 15px;
+    background-position-x: -284px;
+    background-position-y: -76px;
+    transform: rotate(-7deg);
+    overflow: scroll;
+    overflow-wrap: break-word;
+
+
  }
+ #mainContainer {
+    position:fixed;
+  }
+  #myTable {
+    width:99%;
+    overflow-wrap: break-word;
+
+  }
 
  input[type=checkbox] {
     position: relative;
       cursor: pointer;
+      width:20px;
+      height:20px;
 }
  
 
 .lineThru {
     text-decoration: line-through;
     color:black;
+    /*outline:1px solid black;*/
+     
 }
+
 .checkClass::after {
-    content: "";
+    content: "✓";
     display: inline;
     position: absolute;
-    width: 16px;
-    height: 16px;
-    opacity:1;
-     transform: translate(-18px);
-     border: 0px solid #555555;
+    font-size: 17px;
+    width: 11px;
+    height: 17px;
+    text-align: center;
+    opacity: 1;
+    transform: translate(-18px,4px);
+    overflow: hidden;
     border-radius: 3px;
-    background-color:black;
+    background-color: white;
     pointer-events: none;
+    color: black;
 }
+td {
+    word-wrap: break-word;
+    overflow:scroll;
+    overflow-wrap: break-word;
+
+
+   }
+  #listContainer {
+    width: 484px;
+    overflow-wrap: break-word;
+
+   }
  
