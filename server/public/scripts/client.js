@@ -3,24 +3,26 @@ function onReady() {
 console.log('client.js ready, jquery ready');
     showTasks();
     $('#submitBtn').on('click',addTask);
+    $('#tbody').on('click', '.delBtn', deleteTask);
+
 }
 
 function showTasks() {
     console.log("in showTasks");
-    $('#tbody').empty();
+    $('#appendTask').empty();
     $.ajax({
         method:'GET',
         url: '/tasks'
     }).then(function(response) {
         console.log("GET /tasks response",response);
         for(let x of response) {
-            $('#tbody').append(`
+            $('#appendTask').append(`
             <tr>
                 <td> ${x.task}</td> 
                 <td> ${x.completed} </td>
                 <td><input type="checkbox" class="check"/></td>
                 <td> ${x.notes} </td>
-                <td> <button id="delBtn" data-id="dataDel">Delete</button></td>
+                <td> <button class="delBtn" data-id="${x.id}">Delete</button></td>
             </tr>
                `)
             }
@@ -37,7 +39,7 @@ if($('#inputTask').val() == "") {
 }
 console.log("Submit button clicked");
 
-    let trackObj = {
+    let taskObj = {
         task: $('#inputTask').val(),
         completed: false,
         notes: $('#inputNotes').val()
@@ -45,12 +47,27 @@ console.log("Submit button clicked");
     $.ajax({
         type: 'POST',
         url: '/tasks',
-        data: trackObj
+        data: taskObj
     }).then(function(response) {
         $('#inputTask').val(''),
         $('#inputNotes').val('')
         showTasks();
     });
 
+};
+
+function deleteTask(evt) {
+    evt.preventDefault();
+console.log('DELETE button was clicked,ID being', $(this).data('id'));
+    let taskId = $(this).data('id');
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${taskId}`,
+    }).then(function(response) {
+        console.log("The song was deleted!");
+        showTasks();
+    }).catch(function(error) {
+        console.log("ERROR on delete",error);
+    });
 };
 

@@ -71,4 +71,21 @@ router.post('/', (req,res) => {
         });
  });
 
+ router.delete('/:id', (req,res) => {
+    console.log('In delete with ID: ', req.params.id);
+    const taskId = req.params.id;
+    
+    const sqlText = `DELETE FROM "tasks" WHERE "id" = $1;`;
+    const sqlParams = [taskId];
+    
+    pool.query(sqlText, sqlParams)
+    .then((dbRes) => {
+        res.sendStatus(201);
+    })
+    .catch((err) => {
+        console.log("DELETE FAILED,", err);
+        res.sendStatus(500);
+    });
+ });
+
 module.exports = router;
