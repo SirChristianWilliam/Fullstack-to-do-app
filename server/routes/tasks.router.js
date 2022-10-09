@@ -47,9 +47,9 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });
-router.post('/', (req,res) => {
+router.post('/', (req,res) => { //Post will take the inputs from the DOM(client side)
+    // and send the values as an object to be added to the database state table
     console.log('req.body in POST',req.body);
-
     const sqlText = `
         INSERT INTO "tasks"
             ("task", "completed", "notes")
@@ -62,7 +62,6 @@ router.post('/', (req,res) => {
         req.body.notes,
     ];
     console.log("sqlText", sqlText);
-
     pool.query(sqlText, sqlParams)
         .then((dbRes) => {
             res.sendStatus(201);
@@ -72,14 +71,12 @@ router.post('/', (req,res) => {
             res.sendStatus(500);
         });
  });
-
- router.delete('/:id', (req,res) => {
+ router.delete('/:id', (req,res) => { //Deletes the object with the ID that was sent
+    //from the client, and changes database state
     console.log('In delete with ID: ', req.params.id);
     const taskId = req.params.id;
-    
     const sqlText = `DELETE FROM "tasks" WHERE "id" = $1;`;
     const sqlParams = [taskId];
-    
     pool.query(sqlText, sqlParams)
     .then((dbRes) => {
         res.sendStatus(201);
@@ -89,17 +86,17 @@ router.post('/', (req,res) => {
         res.sendStatus(500);
     });
  });
-
  router.put('/:id', (req,res) => {
     const taskId = req.params.id;
-     console.log("In PUT with id:",taskId);
-  
+    console.log("In PUT with id:",taskId);
     sqlText = `UPDATE "tasks"
                 SET "completed" = NOT "completed"
                 WHERE "id" = $1
-                `;
+    `; //Line 93 basically is saying, "set the Boolean value of completed to 
+    // now be the value of NOT completed, which, since it's a Boolean, will switch
+    // between true and false. It knows which row to target, as I sent the ID
+    // of the object row from the client side and sent it to this side, the server.
     const sqlParams = [taskId];
-
     pool.query(sqlText, sqlParams)
         .then((dbRes) => {
             res.sendStatus(201);
@@ -107,8 +104,7 @@ router.post('/', (req,res) => {
         .catch((err) => {
             console.log("Update failed",err);
             res.sendStatus(500);
-        });
-         
+        });   
 });
 
 module.exports = router;
