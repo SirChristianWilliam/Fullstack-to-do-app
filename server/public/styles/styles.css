@@ -1,43 +1,40 @@
 body {
     background-image: url(notepad.jpeg);
     background-repeat: repeat;
-    padding-left: 150px;
+    padding-left: 150px; 
     padding-top: 70px;
+    /* Line 4-5: Positions the content within the body */
     background-position-x: -284px;
     background-position-y: -76px;
-    transform: rotate(-7deg);
+    /* Line 7-8: Positions the background image */
+    transform: rotate(-7deg);/* Rotates the content within the body */
     overflow: scroll;
     overflow-wrap: break-word;
     position: absolute;
- }
- #mainContainer {
+}
+#mainContainer {
     position:fixed;
     text-align: center;
-  }
-  #myTable {
+}
+#myTable {
     width:99%;
     overflow-wrap: break-word;
-
-  }
-.check {
-opacity: 0.5; 
- }
-
- input[type=checkbox] {
-    position: relative;
-      cursor: pointer;
-      width:20px;
-      height:20px;
 }
- 
-
+.check {
+    opacity: 0.5;/* Checkbox effect before checked */
+}
+input[type=checkbox] {
+    position: relative;
+    cursor: pointer;
+    width:20px;
+    height:20px;
+}
 .lineThru {
     text-decoration: line-through;
     color:black;
-    /*outline:1px solid black;*/
-     
+    /* This is the class that is called based off the x.completed boolean
+        in client.js render function*/
 }
-
 .checkClass::after {
     content: "✓";
     display: inline;
@@ -54,89 +51,114 @@ opacity: 0.5;
     pointer-events: none;
     color: black;
     outline:1px solid black;
+    /* ::after was necessary. I was not able to figure out how to actually toggle
+    the checkbox, as it seemed to be disabled. I believe it's an issue regarding the
+    checkbox not being ready yet when clicked, and when it gets to render it just
+    overrites it. Instead, I added this which works perfectly. I added pointer-events:none
+    because the user to click through the ::after checkbox */
 }
 td {
     word-wrap: break-word;
     overflow:scroll;
     overflow-wrap: break-word;
-    font-family: 'Jua';    }
+    font-family: 'Jua','serif';
+}
 th {
     font-size:18px;
 }
 th,td {
   border-bottom:1px solid grey;
-   }
-  #listContainer {
+}
+#listContainer {
     width: 484px;
     overflow-wrap: break-word;
-
-   }
-   #tableHeaders {
+}
+#tableHeaders {
     text-decoration: underline;
     font-family: sans-serif;
-   }
-   header {
+}
+header {
     margin-left: 31px;
     font-family: sans-serif;
     text-decoration: underline;
     margin-left: 30px;
-
-   }
-
-   textarea {
+}
+textarea {
     resize: none;
-    }
-   
-    .textClass {
-        background-color:transparent;  
-        background:  transparent;
-        font-weight:bold;
-        color:black;
-        opacity:0.4 ; 
-        pointer-events: none;
-      } 
-    button {
-        cursor:pointer;
-    }
-    #inputTask:focus,#inputNotes:focus, .noteBox:focus    {
-        outline-color: rgb(90, 61, 24);
-        caret-color: brown;
-        outline-width: 1px; 
-    }
-     
-    .delBtn {
-        border-radius: 5px;
-        border:1px solid black;
-        padding:2px 5px;
-    }
-    .delBtn:hover, #submitBtn:hover {
-        box-shadow:0px 1px 4px black;
-    }
-    .delBtn:active, #submitBtn:active {
-         outline: 1px solid black;
-        outline-offset: -1px;
-        font-style: italic;
-        box-shadow:0px 0px 2px black;
-
-    }
-
-    #tbody {
-        word-break: break-word;
-    }
-    #submitBtn {
-        border-radius: 5px;
+}
+.textClass {
+    background-color:transparent;  
+    background:  transparent;
+    font-weight:bold;
+    color:black;
+    opacity:0.4 ; 
+    pointer-events: none;
+} 
+button {
+    cursor:pointer;
+}
+#inputTask:focus,#inputNotes:focus,.noteBox:focus {
+    outline-color: rgb(90, 61, 24);
+    caret-color: brown;
+    outline-width: 1px; 
+}
+.delBtn {
+    border-radius: 5px;
+    border:1px solid black;
+    padding:2px 5px;
+}
+.delBtn:hover, #submitBtn:hover {
+    box-shadow:0px 1px 4px black;
+}
+.delBtn:active, #submitBtn:active {
+    outline: 1px solid black;
+    outline-offset: -1px;
+    font-style: italic;
+    box-shadow:0px 0px 2px black;
+}
+#tbody {
+    word-break: break-word;
+}
+#submitBtn {
+    border-radius: 5px;
     border: 1px solid black;
-    }
-
-   .norm {
+}
+.norm {
     font-size:"";
-    } 
-   .smaller {
+} 
+.smaller {
     font-size: 13px;
-   }
-   .spanClass {
+}
+.spanClass {
     float:left;
-   }
+}
+/* .norm,.smaller, and .spanClass are all classes that get added
+depending upon events in the client.js render function.
+If x.task.length >20, the variable fontChange will equal the string "smaller",
+which sends that string into the class on line 41 of client.js to be used as a class.
+The default class is .norm, so any task input text that is less than 20 characters in length.
+The span class applies to all hyphens to the left of the task text.
+Without it, when the text is too long the hyphen would float above the text,
+so this way it always is to the left side.*/
+#myform {
+    padding-bottom:10px;
+}
+   @media only screen and (max-width: 750px) {
+    body {
+    padding-left: 2px;
+    padding-top: 43px;
+    background-position-x: -436px;
+    background-position-y: -102px;
+    }
+    html {
+        transform: rotate(6deg);
+        /* This rotates the background image and the content inside, used for
+        when the screen width would otherwise cut off the width of the content */
+    }
+}
+ 
+  /* Code commented below is just some experimental styling I'm keeping
+    in case I want to mess with it later */
    /* #inputTask {
     background-image: linear-gradient(45deg, #d4cdb9, transparent);
     color: black;
@@ -148,18 +170,3 @@ th,td {
     border: 2px solid #767676;
     } */
     
-   #myform {
-    padding-bottom:10px;
-   }
-   @media only screen and (max-width: 750px) {
-    body {
-    padding-left: 2px;
-    padding-top: 43px;
-    background-position-x: -436px;
-    background-position-y: -102px;
-    }
-    html {
-        transform: rotate(6deg);
-    }
-  }
- 
