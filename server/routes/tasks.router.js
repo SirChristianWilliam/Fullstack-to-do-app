@@ -2,50 +2,51 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
- let tasks = [
-    {
-        task: "Clean Room",
-        completed: false,
-        notes: "Start with dusting"
-    },
-    {
-        task: "Karate Lesson",
-        completed: false,
-        notes: "Work on round kick"
-    },
-    {
-        task: "Groceries",
-        completed: false,
-        notes: "Do not forget orange juice"
-    },
-    {
-        task: "Invest in dogecoin",
-        completed: false,
-        notes: "INVEST INVEST INVEST"
-    },
-    {
-        task: "Weekend Project",
-        completed: false,
-        notes: "Remember to drink water"
-    },
-    {
-        task: "Water plants",
-        completed: false,
-        notes: "Plants need water too"
-    }
-];
-
+//  let tasks = [
+//     {
+//         task: "Clean Room",
+//         completed: false, //Every new task starts as false
+//         notes: "Start with dusting"
+//     },
+//     {
+//         task: "Karate Lesson",
+//         completed: false,
+//         notes: "Work on round kick"
+//     },
+//     {
+//         task: "Groceries",
+//         completed: false,
+//         notes: "Do not forget orange juice"
+//     },
+//     {
+//         task: "Invest in dogecoin",
+//         completed: false,
+//         notes: "INVEST INVEST INVEST"
+//     },
+//     {
+//         task: "Weekend Project",
+//         completed: false,
+//         notes: "Remember to drink water"
+//     },
+//     {
+//         task: "Water plants",
+//         completed: false,
+//         notes: "Plants need water too"
+//     }
+// ];
 router.get('/', (req, res) => {
     pool.query(`
         SELECT * FROM "tasks" ORDER BY "id" LIMIT 15;
-    `).then((dbRes) => {
+    `).then((dbRes) => { //Line 39, I limit the visible data by 15
+    // this way it won't run off the page and just looks nicer.
+    //Order by ID so the rows don't rearrange themselves
     res.send(dbRes.rows);
-}).catch((err) => {
-    console.log('GET /tasks failed', err);
-    res.sendStatus(500);
+    })
+    .catch((err) => {
+        console.log('GET /tasks failed', err);
+        res.sendStatus(500);
+    });
 });
-});
-
 router.post('/', (req,res) => {
     console.log('req.body in POST',req.body);
 
@@ -110,6 +111,14 @@ router.post('/', (req,res) => {
          
 });
 
+module.exports = router;
+
+//THE COMMENTED OUT CODE BELOW IS MY ATTEMPT TO GET THE INPUT NOTES BOX VALUE
+//WHENEVER I MOVE MY MOUSE OUT, AND THEN UPDATE THE DATABASE AND APPEND
+//THAT NEW VALUE TO THE DOM. HOWEVER, IT SEEMED THAT IT JUST KEPT
+//LINKING TO THE FIRST PUT REQUEST IN THE ROUTES SERVER AND I COULDN'T FIGURE
+//OUT HOW TO FIX THAT. LEAVING THIS HERE JUST IN CASE I WANT TO GO BACK AND TRY AGAIN.
+
 // router.put('/:note', (req,res) => {
 //     const noteId = req.params.id;
 //      console.log("In NOTE PUT with id:",noteId);
@@ -129,4 +138,3 @@ router.post('/', (req,res) => {
 //         });
 // });
 
-module.exports = router;
