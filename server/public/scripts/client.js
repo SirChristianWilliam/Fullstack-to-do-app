@@ -47,7 +47,6 @@ function render(taskObj) {
                 <td class=${textClass}><textarea class="noteBox" data-note="${x.notes}">${x.notes} </textarea></td>
                 <td> <button class="delBtn" data-id="${x.id}"> Delete </button></td>
              </tr>
-              
                `)
             }
 }

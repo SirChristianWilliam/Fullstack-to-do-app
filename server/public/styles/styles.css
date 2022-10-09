@@ -101,9 +101,9 @@ th,td {
     #inputTask:focus,#inputNotes:focus, .noteBox:focus    {
         outline-color: rgb(90, 61, 24);
         caret-color: brown;
-        outline-width: 1px;
-        
+        outline-width: 1px; 
     }
+     
     .delBtn {
         border-radius: 5px;
         border:1px solid black;
@@ -137,6 +137,29 @@ th,td {
    .spanClass {
     float:left;
    }
-     
-     
+   /* #inputTask {
+    background-image: linear-gradient(45deg, #d4cdb9, transparent);
+    color: black;
+    border: 2px solid #767676;
+   }
+   #inputNotes {
+    background-image: linear-gradient(45deg, #d4cdb9, transparent);
+    color: black;
+    border: 2px solid #767676;
+    } */
+    
+   #myform {
+    padding-bottom:10px;
+   }
+   @media only screen and (max-width: 750px) {
+    body {
+    padding-left: 2px;
+    padding-top: 43px;
+    background-position-x: -436px;
+    background-position-y: -102px;
+    }
+    html {
+        transform: rotate(6deg);
+    }
+  }
  

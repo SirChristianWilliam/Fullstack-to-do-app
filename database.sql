@@ -7,9 +7,9 @@ CREATE TABLE tasks (
 INSERT INTO "tasks"
 	("task", "completed", "notes")
 VALUES
-	('Clean Room', 'false','Start with dusting'),
-	('Karate Lesson', 'false', 'Work on round kick'),
-	('Groceries', 'false', 'Do not forget orange juice'),
+	('Clean Room', 'false','Remove hoard of pizza crusts'),
+	('Karate Lesson', 'false', 'Throat punches only'),
+	('Groceries', 'false', 'Bananas, Oatmeal, Battery acid, Flour,Green beans, laundry detergent, milk, almond milk, bagels, lava, lunchables, pizza crust'),
 	('Invest in dogecoin', 'false', 'INVEST INVEST INVEST'),
-	('Weekend Project', 'false', 'Remember to drink water'),
-	('Water plants', 'false','Plants need water too');
+	('Weekend Project', 'false', 'Spend at least 72 hours on styling'),
+	('Water plants', 'false','Do not water the fake ones again');
