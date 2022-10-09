@@ -9,6 +9,7 @@ console.log('client.js ready, jquery ready');
     $('#tbody').on('click','.check',changeStatus);
     /*$('#tbody').on('mouseout','.noteBox',changeNotes);*/
  }
+   
 function showTasks() {
      console.log("in showTasks");
     $.ajax({
@@ -23,6 +24,7 @@ function showTasks() {
 }
 function render(taskObj) {
     $('#tbody').empty();
+   
     for(let x of taskObj) {
         const tasksClass = x.completed ? "lineThru" : "";
         const btnText = x.completed ? "" : "";
@@ -31,10 +33,15 @@ function render(taskObj) {
         const checkText = x.completed ? "" : "";
         
         const textClass = x.completed ? "textClass" : "";
- 
+        
+        if(x.task.length > 20) {
+            fontChange = "smaller";
+        } else {
+            fontChange = "norm";
+         }    
             $('#tbody').append(`
             <tr class=${tasksClass}>
-                <td> - ${x.task}</td> 
+                <td class="taskSizeClass, ${fontChange}"> <span class="spanClass">-</span> ${x.task}</td> 
                 <td> ${x.completed} </td>
                 <td class=${checkClass}> <input type="checkbox" data-id="${x.id}" class="check" ${checkText}> ${btnText} </input></td>
                 <td class=${textClass}><textarea class="noteBox" data-note="${x.notes}">${x.notes} </textarea></td>
@@ -53,6 +60,8 @@ if($('#inputTask').val() == "") {
 } 
 
 console.log("Submit button clicked");
+console.log($('#inputTask').val(),"WHAT IS THIS")
+  
      let taskObj = {
         task: $('#inputTask').val(),
         completed: false,
