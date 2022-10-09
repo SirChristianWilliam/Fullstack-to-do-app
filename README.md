@@ -1,5 +1,5 @@
 # PROJECT NAME
-Fullstack-app-wknd-challenge-3
+To-do App
 ## Description
 Time to complete project: 25 hours
 
