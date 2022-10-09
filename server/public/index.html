@@ -6,28 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/vendors/jquery.js"></script>
     <script src="/scripts/client.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Jua' rel='stylesheet'>
+
+    <link href='https://fonts.googleapis.com/css?family=Love Ya Like A Sister' rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Patrick Hand' rel='stylesheet'>
     <title>To-do App</title>
 </head>
 <body>
      <header id="header">
-        <h1> To-do App </h1>
+        <h1> To-do List </h1>
     </header>
 <main id="mainContainer">
 <form id="myform">
-    <input id="inputTask" maxlength="17" required placeholder="what to-do today"/>
-    <input id="inputNotes" type="text" maxlength="20" required placeholder="add notes here"/>
+    <input id="inputTask" maxlength="17" required placeholder="what to-do today" autocomplete="off"/>
+    <input id="inputNotes" type="text" maxlength="200" required placeholder="add notes here" autocomplete="off"/>
     <button id="submitBtn">Add Task</button>
 </form>
  <section id="listContainer">
     <table id="myTable">
         <thead>
             <tr id="tableHeaders">
-            <th>Task</th>
-            <th>Completed</th>
-            <th>Y/N</th>
-            <th>Notes</th>
-            <th>Delete Task</th>
+                <th>Task</th>
+                <th>Completed</th>
+                <th></th>
+                <th>Notes</th>
+                <th>Delete</th>
             </tr>
         </thead>
 

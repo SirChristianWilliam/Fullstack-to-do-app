@@ -1,24 +1,27 @@
 body {
     background-image: url(notepad.jpeg);
     background-repeat: repeat;
-    padding-left: 155px;
-    padding-top: 15px;
+    padding-left: 150px;
+    padding-top: 70px;
     background-position-x: -284px;
     background-position-y: -76px;
     transform: rotate(-7deg);
     overflow: scroll;
     overflow-wrap: break-word;
-
-
+    position: absolute;
  }
  #mainContainer {
     position:fixed;
+    text-align: center;
   }
   #myTable {
     width:99%;
     overflow-wrap: break-word;
 
   }
+.check {
+opacity: 0.5; 
+ }
 
  input[type=checkbox] {
     position: relative;
@@ -40,27 +43,80 @@ body {
     display: inline;
     position: absolute;
     font-size: 17px;
-    width: 11px;
-    height: 17px;
+    width: 16px;
+    height: 18px;
     text-align: center;
     opacity: 1;
-    transform: translate(-18px,4px);
+    transform: translate(-21px,4px);
     overflow: hidden;
     border-radius: 3px;
     background-color: white;
     pointer-events: none;
     color: black;
+    outline:1px solid black;
 }
 td {
     word-wrap: break-word;
     overflow:scroll;
     overflow-wrap: break-word;
-
-
+    font-family: 'Jua';    }
+th {
+    font-size:18px;
+}
+th,td {
+  border-bottom:1px solid grey;
    }
   #listContainer {
     width: 484px;
     overflow-wrap: break-word;
 
    }
+   #tableHeaders {
+    text-decoration: underline;
+    font-family: sans-serif;
+   }
+   header {
+    margin-left: 31px;
+    font-family: sans-serif;
+    text-decoration: underline;
+    margin-left: 30px;
+
+   }
+
+   textarea {
+    resize: none;
+    }
+   
+    .textClass {
+        background-color:transparent;  
+        background:  transparent;
+        font-weight:bold;
+        color:black;
+        opacity:0.4 ; 
+        pointer-events: none;
+      } 
+    button {
+        cursor:pointer;
+    }
+    #inputTask:focus,#inputNotes:focus, .noteBox:focus    {
+        outline-color: rgb(90, 61, 24);
+        caret-color: brown;
+        outline-width: 1px;
+        
+    }
+    .delBtn {
+        border-radius: 5px;
+        border:1px solid black;
+        padding:2px 5px;
+    }
+    .delBtn:hover {
+        box-shadow:0px 1px 4px black;
+    }
+    .delBtn:active {
+         outline: 1px solid black;
+        outline-offset: -1px;
+        font-style: italic;
+        box-shadow:0px 0px 2px black;
+
+    }
  

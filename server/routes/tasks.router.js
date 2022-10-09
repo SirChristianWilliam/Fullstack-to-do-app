@@ -37,7 +37,7 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     pool.query(`
-        SELECT * FROM "tasks" ORDER BY "id";
+        SELECT * FROM "tasks" ORDER BY "id" LIMIT 15;
     `).then((dbRes) => {
     res.send(dbRes.rows);
 }).catch((err) => {
@@ -48,11 +48,12 @@ router.get('/', (req, res) => {
 
 router.post('/', (req,res) => {
     console.log('req.body in POST',req.body);
+
     const sqlText = `
         INSERT INTO "tasks"
             ("task", "completed", "notes")
         VALUES
-            ($1,$2,$3);
+            ($1,$2,$3)
         `;
     const sqlParams = [
         req.body.task,
@@ -94,7 +95,8 @@ router.post('/', (req,res) => {
   
     sqlText = `UPDATE "tasks"
                 SET "completed" = NOT "completed"
-                WHERE "id" = $1`;
+                WHERE "id" = $1
+                `;
     const sqlParams = [taskId];
 
     pool.query(sqlText, sqlParams)
@@ -105,7 +107,26 @@ router.post('/', (req,res) => {
             console.log("Update failed",err);
             res.sendStatus(500);
         });
-        console.log(req.params,"HHHHH");
+         
 });
+
+// router.put('/:note', (req,res) => {
+//     const noteId = req.params.id;
+//      console.log("In NOTE PUT with id:",noteId);
+  
+//     sqlText = `UPDATE "tasks"
+//                 SET "notes" = ${$('.noteBox').val()}
+//                 WHERE "id" = $1`;
+//     const sqlParams = [noteId];
+
+//     pool.query(sqlText, sqlParams)
+//         .then((dbRes) => {
+//             res.sendStatus(201);
+//         })
+//         .catch((err) => {
+//             console.log("Update failed",err);
+//             res.sendStatus(500);
+//         });
+// });
 
 module.exports = router;
