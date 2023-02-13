@@ -24,16 +24,21 @@ body {
     opacity: 0.5;/* Checkbox effect before checked */
 }
 input[type=checkbox] {
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
     width:20px;
     height:20px;
+    position: relative;
+
 }
 .lineThru {
     text-decoration: line-through;
     color:black;
     /* This is the class that is called based off the x.completed boolean
         in client.js render function*/
+}
+.checkClass {
+    position:relative;
 }
 .checkClass::after {
     content: "✓";
