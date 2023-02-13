@@ -156,6 +156,20 @@ so this way it always is to the left side.*/
         when the screen width would otherwise cut off the width of the content */
     }
 }
+/* #hey {
+    border:1px solid black;
+    width:1900px;
+    height:900px;
+    display:inline;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: #d1c8b1;;
+    margin-right:5000px;
+    opacity:.1;
+    overflow: hidden;
+    box-sizing: border-box;
+} */
  
   /* Code commented below is just some experimental styling I'm keeping
     in case I want to mess with it later */
@@ -169,4 +183,4 @@ so this way it always is to the left side.*/
     color: black;
     border: 2px solid #767676;
     } */
-    
+ 
