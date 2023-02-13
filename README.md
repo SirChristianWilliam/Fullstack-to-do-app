@@ -1,5 +1,5 @@
 # PROJECT NAME
-Fullstack-app-wknd-challenge-3
+To-do App
 ## Description
 Time to complete project: 25 hours
 
@@ -35,6 +35,6 @@ Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped m
 If you have suggestions or issues, please email me at [chrismaki123@gmail.com]
 
 ## NOTE:
-I plan on adding more feature to this in the future.
+I plan on adding more features to this in the future.
 
 Image provided by: https://wallpaperaccess.com/notebook
