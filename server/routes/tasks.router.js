@@ -36,7 +36,7 @@ const pool = require('../modules/pool');
 // ];
 router.get('/', (req, res) => {
     pool.query(`
-        SELECT * FROM "tasks" ORDER BY "id" LIMIT 15;
+        SELECT * FROM "tasks" ORDER BY "id" ;
     `).then((dbRes) => { //Line 39, I limit the visible data by 15
     // this way it won't run off the page and just looks nicer.
     //Order by ID so the rows don't rearrange themselves

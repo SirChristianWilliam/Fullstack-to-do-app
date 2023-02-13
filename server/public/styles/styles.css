@@ -72,6 +72,8 @@ th,td {
 #listContainer {
     width: 484px;
     overflow-wrap: break-word;
+    max-height: 700px;
+    overflow: scroll;
 }
 #tableHeaders {
     text-decoration: underline;
